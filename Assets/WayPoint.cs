@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour 
 {
+
+	public bool isExplored = false; // ok as is a data class
+
 	Vector2Int gridPos;
 	const int gridSize = 10;
 
@@ -15,8 +18,15 @@ public class WayPoint : MonoBehaviour
 	public Vector2Int GetGridPos()
 	{
 		return new Vector2Int(
-			 Mathf.RoundToInt(transform.position.x / 10f) * gridSize,
-			 Mathf.RoundToInt(transform.position.z / 10f) * gridSize
+			 Mathf.RoundToInt(transform.position.x / 10f),
+			 Mathf.RoundToInt(transform.position.z / 10f)
 		);
 	}
+
+	public void SetTopColor(Color color)
+    {
+		MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+		topMeshRenderer.material.color = color;
+
+    }
 }
