@@ -415,48 +415,6 @@ Prefab:
     - {fileID: 114811238572332120, guid: 700ff3467e6f35c4d9307b685e8746d1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 700ff3467e6f35c4d9307b685e8746d1, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &105767733
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2018391385}
-    m_Modifications:
-    - target: {fileID: 4589261026585514, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589261026585514, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589261026585514, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589261026585514, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589261026585514, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589261026585514, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589261026585514, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4589261026585514, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &119024139
 Prefab:
   m_ObjectHideFlags: 0
@@ -617,7 +575,7 @@ Prefab:
         type: 2}
       propertyPath: targetEnemy
       value: 
-      objectReference: {fileID: 1064328592}
+      objectReference: {fileID: 0}
     - target: {fileID: 1105998196342994, guid: b7d2afbab35d24b478fd5c3058b313da, type: 2}
       propertyPath: m_Name
       value: Towers
@@ -1763,7 +1721,7 @@ Prefab:
         type: 2}
       propertyPath: targetEnemy
       value: 
-      objectReference: {fileID: 1064328592}
+      objectReference: {fileID: 0}
     - target: {fileID: 1105998196342994, guid: b7d2afbab35d24b478fd5c3058b313da, type: 2}
       propertyPath: m_Name
       value: Tower (2)
@@ -2489,11 +2447,6 @@ Prefab:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 9dad193ae366104438a3bb6ce065d61f, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1064328592 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4589261026585514, guid: 25af268088b1c3e44abd68ffe833d807,
-    type: 2}
-  m_PrefabInternal: {fileID: 105767733}
 --- !u!4 &1071375808 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4990558613780620, guid: 9dad193ae366104438a3bb6ce065d61f,
@@ -3395,7 +3348,7 @@ Prefab:
         type: 2}
       propertyPath: targetEnemy
       value: 
-      objectReference: {fileID: 1064328592}
+      objectReference: {fileID: 0}
     - target: {fileID: 1105998196342994, guid: b7d2afbab35d24b478fd5c3058b313da, type: 2}
       propertyPath: m_Name
       value: Tower (1)
@@ -4381,6 +4334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f779eace96c05744a2afebd4c0bed55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondsBetweenSpawns: 2
+  enemy: {fileID: 114070792143038900, guid: 25af268088b1c3e44abd68ffe833d807, type: 2}
 --- !u!1001 &1740091522
 Prefab:
   m_ObjectHideFlags: 0
@@ -5060,8 +5015,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.13077797, y: 0.00000006460539, z: -0.29904562}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1064328592}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
