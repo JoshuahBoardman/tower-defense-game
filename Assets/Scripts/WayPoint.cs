@@ -8,6 +8,9 @@ public class WayPoint : MonoBehaviour
 	// public ok as is a data class
 	public bool isExplored = false;
 	public WayPoint exploredFrom;
+	public bool isBlocked = false;
+
+	[SerializeField] Tower towerPrefab;
 
 	Vector2Int gridPos;
 
@@ -26,10 +29,12 @@ public class WayPoint : MonoBehaviour
 		);
 	}
 
-	public void SetTopColor(Color color)
-    {
-		MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
-		topMeshRenderer.material.color = color;
-
-    }
+	void OnMouseOver()
+	{
+		if (Input.GetKey(KeyCode.Mouse0) & isBlocked == false ) // left click
+		{
+			Instantiate (towerPrefab , transform.position, Quaternion.identity);
+			isBlocked = true;
+		}
+	} 
 }

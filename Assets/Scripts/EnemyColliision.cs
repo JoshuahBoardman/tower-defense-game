@@ -6,7 +6,8 @@ public class EnemyColliision : MonoBehaviour
 {
 
 	[SerializeField] int hits = 10;
-
+    [SerializeField] ParticleSystem hit;
+    [SerializeField] ParticleSystem death;
 
 	// Use this for initialization
 	void Start()
@@ -33,10 +34,13 @@ public class EnemyColliision : MonoBehaviour
     {
         // todo consider hit FX
         hits = hits - 1;
+        hit.Play();
     }
 
     private void KillEnemy()
     {
+        var vfx = Instantiate(death, transform.position, Quaternion.identity);
+        vfx.Play();
         Destroy(gameObject);
     }
 }
