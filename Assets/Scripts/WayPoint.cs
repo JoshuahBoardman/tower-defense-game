@@ -10,8 +10,6 @@ public class WayPoint : MonoBehaviour
 	public WayPoint exploredFrom;
 	public bool isBlocked = false;
 
-	[SerializeField] Tower towerPrefab;
-
 	Vector2Int gridPos;
 
 	const int gridSize = 10;
@@ -33,8 +31,7 @@ public class WayPoint : MonoBehaviour
 	{
 		if (Input.GetKey(KeyCode.Mouse0) & isBlocked == false ) // left click
 		{
-			Instantiate (towerPrefab , transform.position, Quaternion.identity);
-			isBlocked = true;
+			FindObjectOfType<TowerFactory>().AddTower(this);
 		}
 	} 
 }

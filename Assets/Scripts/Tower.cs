@@ -9,7 +9,9 @@ public class Tower : MonoBehaviour
 	// Paramaters
 	[SerializeField] Transform objectToPan;
 	[SerializeField] GameObject gun;
-	[SerializeField] float attackRange = 10f ;
+	[SerializeField] float attackRange = 10f;
+
+	public WayPoint baseWaypoint;
 
 	//  State 
 	Transform targetEnemy;
