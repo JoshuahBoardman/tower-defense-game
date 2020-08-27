@@ -8,12 +8,13 @@ public class TowerFactory : MonoBehaviour
 
     [SerializeField] int towerLimit = 5;
 	[SerializeField] Tower towerPrefab;
+    [SerializeField] Transform towerParentTransform;
 
-    Queue<Tower> placedTowers = new Queue<Tower>();
+    Queue<Tower> towerQueue = new Queue<Tower>();
 
     public void AddTower(WayPoint baseWaypoint)
 	{
-		if (placedTowers.Count < towerLimit)
+		if (towerQueue.Count < towerLimit)
         {
             InstantiateNewTower(baseWaypoint);
         }
@@ -25,21 +26,23 @@ public class TowerFactory : MonoBehaviour
   
     private void InstantiateNewTower(WayPoint baseWaypoint)
     {
-        var newTower = Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity);
+        Tower newTower = Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity);
         baseWaypoint.isBlocked = true;
-        placedTowers.Enqueue(newTower);
-        print(placedTowers.Count);
-        // aset tower baseWypoint
+        newTower.transform.parent = towerParentTransform;
 
+        newTower.baseWaypoint = baseWaypoint;
+        baseWaypoint.isBlocked = true;
+
+        towerQueue.Enqueue(newTower);
     }
-    private void MoveExistingTower(WayPoint baseWaypoint)
+    private void MoveExistingTower(WayPoint newBaseWaypoint)
     {
-        var oldTower = placedTowers.Dequeue();
-        // todo take bottom tower off queue
-        // set the isBlocked = false flags
-        // set the baseWaypoint
-        // put the old tower on top of the queue
-        placedTowers.Enqueue(oldTower);
+        var oldTower = towerQueue.Dequeue();
+        oldTower.baseWaypoint.isBlocked = false; // free up the block
+        newBaseWaypoint.isBlocked = true;
+        oldTower.baseWaypoint = newBaseWaypoint;
+        towerQueue.Enqueue(oldTower);
+        oldTower.transform.position = newBaseWaypoint.transform.position;
         Debug.Log("To many towers have been places");
     }
 }

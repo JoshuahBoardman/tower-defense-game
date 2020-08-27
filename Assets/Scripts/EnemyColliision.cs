@@ -32,15 +32,17 @@ public class EnemyColliision : MonoBehaviour
 
     private void ProcessHit()
     {
-        // todo consider hit FX
         hits = hits - 1;
         hit.Play();
     }
 
-    private void KillEnemy()
+     private void KillEnemy()
     {
         var vfx = Instantiate(death, transform.position, Quaternion.identity);
         vfx.Play();
+        float destroyDelay = vfx.main.duration;
+
+        Destroy(vfx.gameObject, destroyDelay);
         Destroy(gameObject);
     }
 }
