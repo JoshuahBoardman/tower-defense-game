@@ -6,6 +6,7 @@ public class EnemyColliision : MonoBehaviour
 {
 
 	[SerializeField] int hits = 10;
+    [SerializeField] int enemyValue = 25;
     [SerializeField] ParticleSystem hit;
     [SerializeField] ParticleSystem death;
 
@@ -27,6 +28,7 @@ public class EnemyColliision : MonoBehaviour
         if (hits <= 0)
         {
             KillEnemy();
+            AwardPoints();
         }
     }
 
@@ -44,5 +46,10 @@ public class EnemyColliision : MonoBehaviour
 
         Destroy(vfx.gameObject, destroyDelay);
         Destroy(gameObject);
+    }
+
+    private void AwardPoints()
+    {
+        FindObjectOfType<PlayerAttributes>().UpdatePoints(enemyValue);
     }
 }

@@ -37,12 +37,12 @@ public class TowerFactory : MonoBehaviour
     }
     private void MoveExistingTower(WayPoint newBaseWaypoint)
     {
-        var oldTower = towerQueue.Dequeue();
-        oldTower.baseWaypoint.isBlocked = false; // free up the block
-        newBaseWaypoint.isBlocked = true;
-        oldTower.baseWaypoint = newBaseWaypoint;
-        towerQueue.Enqueue(oldTower);
-        oldTower.transform.position = newBaseWaypoint.transform.position;
-        Debug.Log("To many towers have been places");
+            var oldTower = towerQueue.Dequeue();
+            oldTower.baseWaypoint.isBlocked = false; // free up the block
+            newBaseWaypoint.isBlocked = true;
+            oldTower.baseWaypoint = newBaseWaypoint;
+            towerQueue.Enqueue(oldTower);
+            oldTower.transform.position = newBaseWaypoint.transform.position;
+            Debug.Log("To many towers have been places");
     }
 }
