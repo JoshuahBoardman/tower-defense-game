@@ -9,10 +9,15 @@ public class EnemyColliision : MonoBehaviour
     [SerializeField] int enemyValue = 25;
     [SerializeField] ParticleSystem hit;
     [SerializeField] ParticleSystem death;
+    [SerializeField] AudioClip EnemyDmgSFX;
+    [SerializeField] AudioClip EnemyDeathSFX;
 
-	// Use this for initialization
-	void Start()
+    AudioSource myAudioSource;
+
+    // Use this for initialization
+    void Start()
 	{
+        myAudioSource = GetComponent<AudioSource>();
 		AddNonTriggerBoxCollider();
 	}
 
@@ -34,7 +39,8 @@ public class EnemyColliision : MonoBehaviour
 
     private void ProcessHit()
     {
-        hits = hits - 1;
+        myAudioSource.PlayOneShot(EnemyDmgSFX);
+        hits --;
         hit.Play();
     }
 
@@ -46,6 +52,8 @@ public class EnemyColliision : MonoBehaviour
 
         Destroy(vfx.gameObject, destroyDelay);
         Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(EnemyDeathSFX, Camera.main.transform.position, .5f);
+
     }
 
     private void AwardPoints()
