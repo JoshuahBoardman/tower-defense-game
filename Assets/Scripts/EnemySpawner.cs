@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
 		while (true)// forever
 		{
 			GetComponent<AudioSource>().PlayOneShot(spawnedEnemySFX);
-			var newEnemey = Instantiate(enemy, transform.position, Quaternion.identity);
+			var newEnemey = Instantiate(enemy, enemyParentTransform.position, Quaternion.identity);
 			yield return new WaitForSeconds(secondsBetweenSpawns);
 			newEnemey.transform.parent = enemyParentTransform;
 		}
